@@ -4,7 +4,6 @@
 }
 
 /* 2. 18~28 라인의 <ul>태그를 선택하는 선택자를 작성(하위[후손] 선택자 필수) */
-
 nav .main-menu {
   border: 2px solid orange
 }
@@ -43,6 +42,7 @@ input[type=text]:not(:read-only):focus {
   아래와 같이 border 속성을 이용하여 결과 테스트
   선택자 {
     border: 2px solid red;
+    
   }
   단, 임의의 class나 id값 추가 금지
   주어진 조건을 충족할 것!
