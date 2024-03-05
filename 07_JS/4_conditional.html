@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>4_conditional</title>
+</head>
+<body>
+  <script>
+    // 조건문
+    // 조건식의 결과에 따라 다른 코드를 실행(분기)하는 구문
+    // if문, switch문
+
+    // if
+    // if (값 또는 조건식) {
+    //   실행코드
+    // }
+    let isShow = true; //참
+    let checked = false; // 거짓
+
+    if (isShow) {
+      console.log('Show!');
+    }
+
+    if (checked) {
+      console.log('checked!');
+    } // 값이 거짓이라 출력이 안됨
+
+    // if~ else
+    if (isShow) {
+      console.log('보임🙄');
+    } else {
+      console.log('숨김😶');
+    }
+
+    // if ~ else if ~ else
+    const score = 1;
+
+    if (score >= 90) {
+      console.log('A❤');
+    } else if (score >= 80) {
+      console.log('B🎈');
+    } else if (score >= 70) {
+      console.log('C💡');
+    } else {
+      console.log('D💢');
+    }
+  </script>
+</body>
+</html>
