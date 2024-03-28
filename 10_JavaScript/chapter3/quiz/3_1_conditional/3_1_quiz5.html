@@ -20,12 +20,42 @@
 
 
     
-    const maxNum = num1 > num2 ? num1 : (num2 > num3 ? num2 : (num3 > num1 ? num3 : num1));
-    document.write('최대값: '+ maxNum, '<br>');
-    // const minNum =
+    // if (num1 >= num2 && num1 >= num3) { document.write('최대값: '+ num1, '<br>');} 
+    // else if (num2 >= num3 && num2 >= num1) { document.write('최대값: '+ num2, '<br>');} 
+    // else if (num3 >= num1 && num3 >= num2) { document.write('최대값: '+ num3, '<br>');}
+    
+    // if (num1 <= num2 && num1 <= num3) { document.write('최소값: '+ num1, '<br>');} 
+    // else if (num2 <= num3 && num2 <= num1) { document.write('최소값: '+ num2, '<br>');}
+    // else if (num3 <= num1 && num3 <= num2) { document.write('최소값: '+ num3, '<br>');}
+
+    // const maxNum = num1 > num2 ? num1 : (num2 > num3 ? num2 : (num3 > num1 ? num3 : num1));
+    // document.write('최대값: '+ maxNum, '<br>');
+    
+    // const minNum = num1 < num2 ? num1 : (num2 < num3 ? num2 : (num3 < num1 ? num3 : num1));
     // document.write('최소값: '+ minNum, '<br>');
+    
     document.write( '합계: ' + Number(num1 + num2 + num3), '<br>');
     document.write( '평균값: ' + Number((num1 + num2 + num3) / 3 ), '<br>');
+
+
+    //선생님의 풀이법
+    // let max = num1;
+    // if (max < num2) max = num2;
+    // if (max < num3) max = num3;
+    // document.write('최대값: ' + max , '<br>');
+
+    //최대값 어쩌구,, 구하기
+    // let max2 = Math.max(num1, num2, num3) ;
+    // document.write('최대값: ' + max2 , '<br>');
+    
+    // let min = num1;
+    // if (min > num2) min = num2;
+    // if (min > num3) min = num3;
+    // document.write('최소값: ' + min , '<br>');
+
+    // ㅊ최소값 math.. 
+    // document.write('최소값: ' + min2 , '<br>');
+    // let min2 = Math.min(num1, num2, num3);
   </script>
 </head>
 <body>

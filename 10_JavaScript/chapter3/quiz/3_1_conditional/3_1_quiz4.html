@@ -17,18 +17,43 @@
 
 
     // 풀이4-1
-    const cm = prompt('당신의 키는???????');
-    if (cm >= 150) {
-      document.write('놀이기구 이용 가능');
-    } else if (cm < 150) {
-      const withParents = confirm('부모님과 왔나여?');
-      if (withParents) {
-        document.write('좋은 시간 보내렴~');
-      } else {
-        document.write('어른 모시고 다시 오렴~');
-      }
-    }
+    // const cm = prompt('당신의 키는???????(/ω＼*)……… (/ω•＼*)');
+    // if (cm < 150) {
+    //   const withParents = confirm('부모님과 왔나여?ƪ(˘⌣˘)ʃ');
+    //   if (withParents) {
+    //     document.write('좋은 시간 보내렴~( •̀ ω •́ )✧');
+    //   } else {
+    //     document.write('어른 모시고 다시 오렴~(´▽`ʃ♡ƪ)');
+    //   }
+    // } else {
+    //   document.write('놀이기구 이용 가능(∩^o^)⊃━☆');
+    // }
     
+
+    // 선생님의 풀이법..
+    const height = prompt('신장을 입력하세요');
+    let msg = '놀이기구 이용 가능';
+
+    // if (height < 150) {
+    //   const withMom = confirm('부모님과 함께 왔나영?');
+    //   if (withMom) {
+    //     msg = '좋은 시간 보내렴~'
+    //   } else {
+    //     msg = '어른 모시고 다시 오렴~'
+    //   }
+    // } else {
+    //   msg = '놀이기구 이용 가능';
+    // }
+    // document.write(msg);
+
+
+    // 또다른 풀이..
+    // if (height < 150) {
+    // msg = confirm('부모님과 함께 왔나여?') ? '좋은 시간 보내렴' : '어른 모시고 다시 오렴~~~~~';
+    // } else {
+    //   msg = '놀이기구 이용 가능';
+    // }
+    // document.write(msg);
   </script>
 </head>
 <body>
