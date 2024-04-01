@@ -19,8 +19,8 @@
   <!-- *** -->
   <div>
     <p>
-      <button type="button" onclick="gallery(0)">이전</button>
-      <button type="button" onclick="gallery(1)">다음</button>
+      <button type="button" onclick="galleryPrev()">이전</button>
+      <button type="button" onclick="galleryNext()">다음</button>
     </p>
     <p>
       <img src="images/pic_1.jpg" alt="photo" class="photo">
@@ -105,7 +105,7 @@
     }
     introduce('최현아','인천 어딘가'); // 인수(인자값, 매개값)를 넘겨줌
     introduce('최현아'); // 꼭 인자값 수를 맞출 필요는 없음!
-    introduce('최현아','인천 어딘가', '무의미한 에디터어어어');
+    introduce('최현아','인천 어딘가', '무의미한 데이터어어어');
 
     // 로그인 함수 만들기 실습
     const dbUser = {
@@ -197,10 +197,43 @@
     // (위 body 태그 참조 ***)
     // 힌트 img 태그 선택 후 setAttribute를 이용하여 src 속성 변경
     const galleryImg = document.querySelector('.photo');
-    console.log(galleryImg);
-    function gallery() {
-      galleryImg.setAttribute(src =) 
-    }
+    // console.log(galleryImg);
+    let i = 1;
+    // function gallery() {
+    //     i += 1;
+    //     if (i <= 8) {
+    //       galleryImg.setAttribute('src' , `images/pic_${i}.jpg`) ;
+    //     }
+    //   }
+    function galleryNext() {
+        i += 1;
+        if (i <= 8) {
+          galleryImg.setAttribute('src' , `images/pic_${i}.jpg`) ;
+        }
+      }
+
+    function galleryPrev() {
+        i -= 1;
+        if (i >= 1) {
+          galleryImg.setAttribute('src' , `images/pic_${i}.jpg`) ;
+        }
+      }
+
+    // function gallery() {
+    //   for (let i = 1; i <= 8; i++) {
+    //     i += 1;
+    //     const result = galleryImg.setAttribute(`src` , `images/pic_${i}.jpg`) ;
+    //     // if (i == 1 || i == 8) {
+    //     //   return;
+    //     // }
+    //     result();
+    //   }
+    // }
+
+
+
+
+    
   </script>
 </body>
 </html>
