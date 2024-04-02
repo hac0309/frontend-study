@@ -24,8 +24,16 @@
     
     
     function printNumbers(form, to) {
-      
+      let i = form;
+      const count = setInterval(function () {
+        document.write(`${i}<br>`);
+        if (i === to) {
+          clearInterval(count);
+        }
+        i++;
+      }, 1000)
     }
+
     printNumbers(5, 10); // 5~10까지 1초 간격으로 출력
 
   </script>
