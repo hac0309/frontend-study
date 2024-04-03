@@ -21,18 +21,43 @@
     //   실행코드;
     // } , interval);
     // clearInterval(변수); // 취소
+
+    // 한글로 풀이(플로우 차트)
+    // 1) 함수 printNumbers(from ,to)를 선언하기
+    // 2) 1초 간격으로 (setInterval(함수, 1000))from 값을 출력시키키
+    // 3) 출력되는 숫자를 1씩 증가시키기(+1, ++)
+    // 4) to 값까지만(조건: from === to, from >= to) 출력하고 멈추기 (clearInterval())
     
-    
-    function printNumbers(form, to) {
-      let i = form;
-      const count = setInterval(function () {
-        document.write(`${i}<br>`);
-        if (i === to) {
-          clearInterval(count);
+    // function printNumbers(from, to) {
+    //   let i = from;
+    //   const count = setInterval(function () {
+    //     document.write(`${i}<br>`);
+    //     if (i === to) {
+    //       clearInterval(count);
+    //     }
+    //     i++;
+    //   }, 1000)
+    // } // 내풀이 i를 굳이....안정해줘도 됐다는 사~실
+
+    // function printNumbers(from, to) {
+    //   const timerId = setInterval(function () {
+    //     document.write(`${from}<br>`);
+    //     if (from === to) {
+    //       clearInterval(timerId);
+    //     }
+    //     from++;
+    //   }, 1000)
+    // } // 선생님의 풀이..
+
+
+    function printNumbers(from, to) {
+      const timerId = setInterval(function () {
+        document.write(`${from++}<br>`);
+        if (from > to) {
+          clearInterval(timerId);
         }
-        i++;
       }, 1000)
-    }
+    } // 더 짧게...써보기.....???????굳이...
 
     printNumbers(5, 10); // 5~10까지 1초 간격으로 출력
 
