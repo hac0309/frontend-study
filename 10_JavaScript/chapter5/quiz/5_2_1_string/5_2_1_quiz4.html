@@ -8,7 +8,7 @@
 </head>
 <body>
   <input type="file">
-  <input type="file" multiple>
+  <!-- <input type="file" multiple> -->
 
   <script>
     // 문제4
@@ -30,15 +30,36 @@
       console.log(fileInput.files[0]); // File 객체
 
       // 풀이4
-      let check = false;
+      const fileName = fileInput.files[0].name;
+      console.log(fileName);
+      const fileExt = fileName.substring(fileName.lastIndexOf('.') + 1).toLowerCase();
+      console.log(fileExt);
 
-      for (let i = 0; i < imgFileExt.length; i++) {
-        if (fileInput.files[i] < 0) {
-          check = true;
-          break;
-        }
+      // 하드 코딩 == 관리 불편
+      // if (!(fileExt === 'jpg' ||
+      //       fileExt === 'png' ||
+      //       fileExt === 'gif')) {
+      //   alert('이미지 파일이 아닙니다!');
+      // }
+
+      // 배열로 관리하면 편함!
+      //   let valid = false;
+      //   for (let i = 0; i < imgFileExt.length; i++) {
+      //     if (fileExt.indexOf(imgFileExt[i]) > -1) {
+      //       valid = true;
+      //       break;
+      //     }
+      //   }
+      //   if (!valid) {
+      //     alert('이미지 파일이 아닌뎁쇼');
+      //   }
+    
+      // 개선 코드
+      if (!imgFileExt.includes(fileExt)) {
+        alert('이미지 파일이 아닙니다!');
       }
     });
+
   </script>
 </body>
 </html>
