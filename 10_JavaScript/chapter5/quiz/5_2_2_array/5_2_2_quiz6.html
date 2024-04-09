@@ -15,6 +15,33 @@
     const lottoArr = []; // 빈 배열
     
     // 풀이6
+    function getRandomInteger(min, max) {
+      return Math.floor(Math.random() * ( max - min + 1 )) + min;
+    }
+
+    for (let i = 0; i <= 5;) {
+      const lottoNum = getRandomInteger(1,45);
+      if (!lottoArr.includes(lottoNum)) {
+        lottoArr[i] = lottoNum;
+        i++;
+      } 
+    }
+    lottoArr.sort(function (a,b) {
+      return a - b;
+    });
+    document.write(lottoArr);
+
+
+    while (lottoArr.length < 6) {
+      const randomNum = Math.floor(Math.random() * 45) + 1;
+      if (!lottoArr.includes(randomNum)) {
+        lottoArr.push(randomNum);
+      }
+    }
+    lottoArr.sort(function (a,b) {
+      return a - b;
+    });
+    document.write(lottoArr);
     
     // 6번은 풀지 마세요. Math 객체 배우고 와서 풀거에요~~
     // 6번은 풀지 마세요. Math 객체 배우고 와서 풀거에요~~
@@ -27,6 +54,8 @@
     // 6번은 풀지 마세요. Math 객체 배우고 와서 풀거에요~~
     // 6번은 풀지 마세요. Math 객체 배우고 와서 풀거에요~~
     // 6번은 풀지 마세요. Math 객체 배우고 와서 풀거에요~~
+    
+    
   </script>
 </head>
 <body>

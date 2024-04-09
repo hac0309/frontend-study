@@ -15,10 +15,37 @@
     points.sort(function (a,b) {
       return b - a;
     });
-    document.write(`최대값: ${points.slice(0,1)}`);
-    document.write(`최소값: ${points.slice(5,6)}`);
+    console.log(points);
+    document.write(`최대값: ${points[0]} <br>`);
+    document.write(`최소값: ${points[points.length-1]} <br>`);
+    
+
+
+    
+    let maxPoint = points[0]; // -Infinity
+    let minPoint = points[0]; // Infinity
+    for (const el of points) {
+      if (el > maxPoint) {
+        maxPoint = el;
+      }
+      if (el < minPoint) {
+        minPoint = el;
+      }
+    }
+    document.write(`최대값: ${maxPoint} <br>`);
+    document.write(`최소값: ${minPoint} <br>`);
+    
+    
+    // (참고) ES6차 spread 연산자
+    document.write(`최대값: ${Math.max(...points)} <br>`);
+    document.write(`최소값: ${Math.min(...points)} <br>`);
+    
+
+
 
   
+
+
   </script>
 </head>
 <body>

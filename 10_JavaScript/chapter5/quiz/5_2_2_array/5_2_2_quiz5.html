@@ -17,13 +17,14 @@
 
     // 풀이5
     for (let i = 0; i < arrLength; i++) {
-    arr.push(prompt(` ${i+1}번째 배열`));
+    // arr.push(prompt(` ${i+1}번째 배열`));
+    arr[i] = prompt(` ${i+1}번째 배열`);
     }
     if (arr.length > 0) {
       const first = arr[0];
       const last = arr[arr.length - 1];
-      document.write(`첫번째 배열: ${first}`);
-      document.write(`마지막 배열: ${last}`);
+      document.write(`첫번째 배열: ${first} <br>`);
+      document.write(`마지막 배열: ${last} <br>`);
     } 
   </script>
 </head>

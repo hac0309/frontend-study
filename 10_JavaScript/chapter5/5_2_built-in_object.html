@@ -1,66 +1,71 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  <script>
-    //내장 객체(JS 기본 제공)
-    // 자바스크립트 엔진에 내장되어 필요한 경우 생성하여 사용
-    // Object 객체는 모든 JS 객체의 최상위(루트) 객체
-    // 그 외에도 String, Number, Date, Array, Math 등 다양한 객체가 존재
-
-    // 1.String 객체
-    // 문자열을 다루기 위한 객체로 문자열을 다룰 때 유용한 속성과 함수를 제공
-    // 문자열 생성 2가지 방식
-    // 변수 = new String('문자');
-    // 변수 = '문자'; => 리터럴 방식
-    document.write('<h1>String 객체</h1>');
-    
-    // 1) length
-    // 문자열 길이를 반환하는 속성
-    document.write('<h4>문자열 길이</h4>');
-    const txt = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    const sln = txt.length;
-    document.write(sln,'<br>');
-    
-    // 2) indexOf()
-    // 문자열 안에 특정 문자열이 존재하는지 찾고,
-    // 있다면 찾고자 하는 문자열이 시작되는 index를 반환(처음 나타나는 위치)
-    // 발견하지 못하면 -1을 반환
-    document.write('<h4>문자열 검색</h4>');
-    let str = 'Please locate where "locate" occurs!';
-    let pos = str.indexOf('locate');
-    document.write(pos, '<br>');
-    
-    // 3) lastIndexOf()  // 확장자 이름 찾아낼때 이요용용용ㅇ
-    // 문자열 안에 특정 문자열이 존재하는지를 찾는 것은 동일
-    // 찾고자 하는 문자열이 둘 이상 발견되면 제일 마지막에 발견된 문자열의 index를 반환(문자열 끝에서부터 검색)
-    // 발견하지 못하면 -1을 반환
-    pos = str.lastIndexOf('locate');
-    document.write(pos, '<br>');
-    
-    // 검색 시작 위치(index) 지정 가능
-    pos = str.indexOf('locate', 15); // 15번째 index부터 찾기 시작
-    document.write(pos, '<br>');
-    pos = str.lastIndexOf('locate', 15);
-    document.write(pos, '<br>');
-
-
-    // (ES6차) includes()
-    // 지정된 문자열이 포함된 경우 true를 반환
-    // 그렇지 않으면 false를 반환
-    pos = str.includes('locate');
-    document.write(pos, '<br>');
-    pos = str.includes('locate', 15);
-    document.write(pos,'<br>');
-
-    // 실습: 사용자로부터 입력받은 이메일 주소 유효성 검사
-    // 정규표현식을 안쓰는 경우(실무에서는 정규식 사용!)
-    document.write('<h4>실습 : 이메일 주소 유효성 검사</h4>');
-    // const userEmail = prompt('당신의 이메일 주소는?');
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //내장 객체(JS 기본 제공)
+      // 자바스크립트 엔진에 내장되어 필요한 경우 생성하여 사용
+      // Object 객체는 모든 JS 객체의 최상위(루트) 객체
+      // 그 외에도 String, Number, Date, Array, Math 등 다양한 객체가 존재
+      
+      // 1.String 객체
+      // 문자열을 다루기 위한 객체로 문자열을 다룰 때 유용한 속성과 함수를 제공
+      // 문자열 생성 2가지 방식
+      // 변수 = new String('문자');
+      // 변수 = '문자'; => 리터럴 방식
+      document.write('<h1>String 객체</h1>');
+      
+      // 1) length
+      // 문자열 길이를 반환하는 속성
+      document.write('<h4>문자열 길이</h4>');
+      const txt = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+      const sln = txt.length;
+      document.write(sln,'<br>');
+      document.write('<hr>');
+      
+      // 2) indexOf()
+      // 문자열 안에 특정 문자열이 존재하는지 찾고,
+      // 있다면 찾고자 하는 문자열이 시작되는 index를 반환(처음 나타나는 위치)
+      // 발견하지 못하면 -1을 반환
+      document.write('<h4>문자열 검색</h4>');
+      let str = 'Please locate where "locate" occurs!';
+      let pos = str.indexOf('locate');
+      document.write(pos, '<br>');
+      document.write('<hr>');
+      
+      // 3) lastIndexOf()  // 확장자 이름 찾아낼때 이요용용용ㅇ
+      // 문자열 안에 특정 문자열이 존재하는지를 찾는 것은 동일
+      // 찾고자 하는 문자열이 둘 이상 발견되면 제일 마지막에 발견된 문자열의 index를 반환(문자열 끝에서부터 검색)
+      // 발견하지 못하면 -1을 반환
+      pos = str.lastIndexOf('locate');
+      document.write(pos, '<br>');
+      document.write('<hr>');
+      
+      // 검색 시작 위치(index) 지정 가능
+      pos = str.indexOf('locate', 15); // 15번째 index부터 찾기 시작
+      document.write(pos, '<br>');
+      pos = str.lastIndexOf('locate', 15);
+      document.write(pos, '<br>');
+      document.write('<hr>');
+      
+      
+      // (ES6차) includes()
+      // 지정된 문자열이 포함된 경우 true를 반환
+      // 그렇지 않으면 false를 반환
+      pos = str.includes('locate');
+      document.write(pos, '<br>');
+      pos = str.includes('locate', 15);
+      document.write(pos,'<br>');
+      document.write('<hr>');
+      
+      // 실습: 사용자로부터 입력받은 이메일 주소 유효성 검사
+      // 정규표현식을 안쓰는 경우(실무에서는 정규식 사용!)
+      document.write('<h4>실습 : 이메일 주소 유효성 검사</h4>');
+      // const userEmail = prompt('당신의 이메일 주소는?');
     const arrUrl = ['co.kr', '.com', '.net', '.or.kr', '.go.kr'];
 
     // let check1 = false;
@@ -93,6 +98,7 @@
     str = 'Apple, Banana, Kiwi';
     let res = str.slice(7, 13);
     document.write(res, '<br>'); // 바나나
+    document.write('<hr>');
     
     // 두번째 인수인 종료 위치를 생략하면, 시작 위치에서 문자열의 마지막 위치까지 잘라내서 반환
     res = str.slice(7);
@@ -151,6 +157,7 @@
     // 문자열을 모두 소문자로 변경
     text2 = text1.toLowerCase();
     document.write(text2, '<br>');
+    document.write('<hr>');
     
     // 실습: 주민등록번호를 입력받은 후 정보가 노출되지 않도록 뒤의 여섯자리는 ******로 출력하세요.
     document.write('<h4>실습: 주민등록번호 마스킹</h4>');
@@ -224,19 +231,23 @@
     document.write(arr[0],'<br>');
     document.write(arr[1],'<br>');
     document.write(arr[2],'<br>');
+    document.write('<hr>');
     
     document.write('<h4>배열값 가져오기-2</h4>');
     for (let i = 0; i < arr.length; i++) {
       document.write(arr[i],'<br>');
     }
+    document.write('<hr>');
     document.write('<h4>배열값 가져오기-3</h4>'); // 권장안함
     for (const i in arr) { // key 값을 가져옴
       document.write(arr[i],'<br>');
     }
+    document.write('<hr>');
     document.write('<h4>배열값 가져오기-4</h4>');
     for (const el of arr) { // Value 값을 가져옴
       document.write(el,'<br>');
     }
+    document.write('<hr>');
     document.write('<h4>배열값 가져오기-5</h4>');
     arr.forEach(function (element, index) {
       document.write(index,': ',element,'<br>');
@@ -391,7 +402,287 @@
     console.log(index); // true
     index = fruits.includes('Banana', 3); // 검색 시작 위치 지정
     console.log(index); // false
+    document.write('<hr>');
+
+
+    // 3. Math 객체
+    // 수학적인 상수와 내장 함수를 가진 객체로 수학 관련 속성과 함수를 제공
+    // 다른 객체와 달리 Math 생성자가 아님. 즉, 객체 생성을 하지 않고 사용 가능
+    // Math() X Math.속성명; O Math.함수명(); O
+    document.write('<h1>Math 객체</h1>');
+
+    // 속성
+    document.write('<h4>원주율 PI</h4>');
+    document.write(Math.PI, '<br>');
+    document.write('<hr>');
     
+    // 1) Math.round()
+    // 숫자에 대한 반올림 처리(소수점 첫째 자리 반올림)
+    document.write('<h4>round</h4>');
+    document.write(Math.round(4.9),'<br>');
+    document.write(Math.round(4.7),'<br>');
+    document.write(Math.round(4.4),'<br>');
+    document.write(Math.round(4.2),'<br>');
+    document.write(Math.round(-4.2),'<br>');
+    document.write('<hr>');
+
+    // 2) Math.ceil()
+    // 숫자에 대한 올림 처리(소수점 첫째 자리 반올림)
+    document.write('<h4>ceil</h4>');
+    document.write(Math.ceil(4.9),'<br>');
+    document.write(Math.ceil(4.7),'<br>');
+    document.write(Math.ceil(4.4),'<br>');
+    document.write(Math.ceil(4.2),'<br>');
+    document.write(Math.ceil(-4.2),'<br>');
+    document.write('<hr>');
+    // 예:
+    // 50/15 = 3.333333333333333,Math.ceil(50 / 15) = 4
+    // 총 페이지 수 = Math.ceil(총 아이템 수 / 한 페이지당 보이는 아이템 수);
+
+    // 3) Math.floor()
+    // 숫자에 대한 올림 처리(소수점 첫째 자리 반올림)
+    document.write('<h4>floor</h4>');
+    document.write(Math.floor(4.9),'<br>');
+    document.write(Math.floor(4.7),'<br>');
+    document.write(Math.floor(4.4),'<br>');
+    document.write(Math.floor(4.2),'<br>');
+    document.write(Math.floor(-4.2),'<br>');
+    document.write('<hr>');
+    
+    // 4)Math.trunc()
+    // 소수 부분은 버리고 정수 부분만 반환1
+    document.write('<h4>trunc</h4>');
+    document.write(Math.trunc(4.9),'<br>');
+    document.write(Math.trunc(4.7),'<br>');
+    document.write(Math.trunc(4.4),'<br>');
+    document.write(Math.trunc(4.2),'<br>');
+    document.write(Math.trunc(-4.2),'<br>');
+    document.write('<hr>');
+    
+    // 5)Math.sign()
+    // 숫자가 양수인지 음수인지 확인하는 용도로 확인
+    // 양수이면 1, 음수이면 -1, 0이면 0을 반환
+    document.write('<h4>sign</h4>');
+    document.write(Math.sign(-4),'<br>');
+    document.write(Math.sign(0),'<br>');
+    document.write(Math.sign(4),'<br>');
+    document.write('<hr>');
+    
+    // 6)Math.pow()
+    // 거듭제곱(power)한 값을 반환
+    document.write('<h4>pow</h4>');
+    document.write(Math.pow(8,2),'<br>');
+    
+    // (ES7차) 지수 연산자
+    // **은 지수를 뜻함
+    document.write(8 ** 2,'<br>');
+    // 거듭제곱 연산을 여러 번 결합할 때 유용
+    document.write(Math.pow(Math.pow(2,2),2),'<br>');
+    document.write(2 ** 2 ** 2,'<br>');
+    document.write('<hr>');
+    
+    // 7)Math.sqrt()
+    // 제곱근(square root) 값을 반환
+    document.write('<h4>sqrt</h4>');
+    document.write(Math.sqrt(64),'<br>');
+    document.write('<hr>');
+    
+    // 8)Math.abs()
+    // 절대값(absolute)을 반환. 즉, 무조건 양수로 반환
+    document.write('<h4>abs</h4>');
+    document.write(Math.abs(-4.7),'<br>');
+    document.write('<hr>');
+    
+    // 9)Math.min() , Math.max()
+    // min()은 가장 작은 값을 반환하고, max()는 가장 큰 값을 반환
+    document.write('<h4>min, max</h4>');
+    document.write(Math.min(0, 150, 30, 20, -8, -200),'<br>');
+    document.write(Math.max(0, 150, 30, 20, -8, -200),'<br>');
+    document.write('<hr>');
+    
+    // 10) Math.random()
+    // 0보다 크거나 같고 1보다 작은 범위에서 숫자형 값을 반환
+    // 0.0이상 1.0 미만의 부동소수점(실수) 난수를 반환
+    document.write('<h4>random</h4>');
+    document.write(Math.random(),'<br>'); // 랜덤 숫자 반환
+    
+    // (응용) 1에서 10 사이의 랜덤한 정수 생성
+    document.write('<h4>1에서 10 사이의 랜덤한 정수</h4>');
+    const randomNum = Math.random();
+    // 0.0 <= Math.random() < 1.0
+    document.write(randomNum, '<br>');
+    // 0.0 <= Math.random() * 10 < 10.0
+    document.write(randomNum*10, '<br>');
+    // 0 <= Math.floor(Math.random() * 10) < 10
+    document.write(Math.floor(randomNum*10), '<br>');
+    // 1 <= Math.floor(Math.random() * 10)+1 < 11
+    document.write(Math.floor(randomNum*10)+1, '<br>');
+    
+    // 실제 실무에서 특정 범위의 랜덤 정수값을 생성하는 경우가 많음 
+    // 공식화: Math.floor(Math.random() * ( 최대값 - 최소값 + 1 )) + 최소값;
+    // 자주 쓰면 함수로 만들어 놓기
+    document.write('<h4>최소값과 최대값 사이의 정수를 반환하는 함수</h4>');
+    function getRandomInteger(min, max) {
+      return Math.floor(Math.random() * ( max - min + 1 )) + min;
+    }
+    document.write(getRandomInteger(30,50), '<br>');
+    
+    // 실습: 가위, 바위, 보 맞추기
+    document.write('<h4>가위, 바위, 보 맞추기</h4>');
+    const selectRps = prompt('가위, 바위, 보 택1' , '가위');
+    let user;
+
+    switch (selectRps) {
+      case '가위':
+        user = 1;
+        break;
+      case '바위':
+        user = 2;
+        break;
+      case '보':
+        user = 3;
+        break;
+      default:
+        alert('가위 바위 보 중 다 시 선 택 요 망');
+        location.reload(); // 새로고침
+        break;
+    }
+
+    // 1 ~ 3 사이의 랜덤한 정수 생성
+    const com = Math.floor(Math.random() * 3) + 1;
+    document.write(`<img src="images/math_img_${com}.jpg">`);
+
+    if (com === user) {
+      document.write(`<img src="images/game_1.jpg">`);
+    } else {
+      document.write(`<img src="images/game_2.jpg">`);
+    }
+    document.write('<br>');
+
+    // Quiz: 가위, 바위, 보 게임 만들기
+    document.write('<h4>가위, 바위, 보 맞추기</h4>');
+    // 컴퓨터가 낸 것 이미지 출력
+    document.write('컴퓨터가 낸 것<br>');
+    document.write(`<img src="images/math_img_${com}.jpg"><br>`);
+    // 내가 낸 것 이미지 출력
+    document.write('VS 내가 낸 것<br>');
+    document.write(`<img src="images/math_img_${user}.jpg"> <br>`);
+
+    // 누가 이겼는지 출력하기
+    if ((com === 1 && user === 3) || (com === 2 && user === 1) || (com === 3 && user === 2)) {
+      document.write('컴퓨터승리');
+    } else if (com === user) {
+      document.write('비김');
+    } else {
+      document.write('내승리');
+    }
+    document.write('<hr>');
+    
+    // 선생님의 코오옹드
+    // user와 com의 차를 이용
+    // 0이면 비김
+    // 1 또는 -2이면 내가 이김
+    // 그 외는 내가 짐
+    // const whoWin = user - com;
+    // if (whoWin === 0) {
+    //   document.write('비김');
+    // } else if (whoWin === 1|| whoWin === -2) {
+    //   document.write('내승리');
+    // } else {
+    //   document.write('컴퓨터승리');
+    // }
+    // document.write('<br>');
+
+
+    // 4. Date 객체
+    // 날짜와 시간을 다루는 객체로 날짜와 시간에 대한 정보를 보여줌
+    document.write('<h1>Date 객체</h1>');
+
+    // 1) Date() 생성자
+    // Date 객체 생성 4가지 방식
+    // 변수 = new Date();
+    const now = new Date();
+    document.write(now, '<br>');
+
+    // 변수 = new Date(year, month, hours, minutes, seconds, milliseconds);
+    // 이때 month는 0부터 시작
+    const d1 = new Date(2021, 6, 24, 10, 33, 30, 0);
+    document.write(d1,'<br>');
+    
+    // 변수 = new Date(milliseconds);
+    const d2 = new Date(0); // 1970년 1월 1일
+    document.write(d2,'<br>');
+    const d3 = new Date(100000000); // 1970년 1월 1일 + 100000000ms
+    document.write(d3,'<br>');
+    
+    // 변수 = new Date(date String);
+    const d4 = new Date('October 15, 2022 11:30:00'); // 날짜 문자열로 Date 객체 생성
+    document.write(d4,'<br>');
+    const d5 = new Date('2022-10-15T11:30:00');
+    document.write(d5,'<br>');
+    // document.write('<hr>');
+    
+    // 2) Get 함수
+    document.write('<h3>Get 함수</h3>');
+    // 오늘 날짜에 대한 정보를 가지고 있는 객체 생성
+    const today = new Date();
+    const nowYear = today.getFullYear();
+    const nowMonth = today.getMonth(); // 0~11: 현재 월보다 -1
+    const nowDate = today.getDate();
+    const nowDay = today.getDay(); // 0~6: 일~토
+    today.get
+    
+    document.write('<h4>오늘 날짜 정보</h4>');
+    document.write(`날짜 정보(기본 포맷):${today}}<br>`);
+    document.write(`연도: ${nowYear}년<br>`);
+    document.write(`월: ${nowMonth}월<br>`);
+    document.write(`일: ${nowDate}일<br>`);
+    document.write(`요일: ${nowDay}요일<br>`);
+    document.write(`${nowYear}-${nowMonth+1}-${nowDate}<br>`); // 직접 포맷팅
+    
+    // 특정 날짜 정보를 갖는 날짜 객체 생성
+    // 예: 2024년 12월 31일
+    const someday = new Date('2024-12-31T11:00:00');
+    const theYear = someday.getFullYear();
+    const theMonth = someday.getMonth();
+    const theDate = someday.getDate();
+    const theDay = someday.getDay();
+    document.write('<h4>특정 날짜 정보</h4>');
+    document.write(`날짜 정보(기본 포맷):${someday}}<br>`);
+    document.write(`연도: ${theYear}<br>`);
+    document.write(`월: ${theMonth}<br>`);
+    document.write(`일: ${theDate}<br>`);
+    document.write(`요일: ${theDay}<br>`);
+
+    // 실습: 특정 날짜까지 D-day 구하기
+    // 남은 일 수(밀리초) = 특정 날짜 객체 시간 - 현재 날짜 객체 시간
+    // 1초 = 1000 ms
+    // 1분(60초) = 1000 * 60 ms
+    // 1시간(60분) = 1000 * 60 * 60 ms
+    // 1일(24시간) = 1000 * 60 * 60 * 24 ms
+
+    const classEndDate = new Date(2024,6,18);
+    const diffTime = classEndDate.getTime() - today.getTime();
+    const diffDate = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    document.write('<h4>오늘부터 종강까지 남은 일수</h4>');
+    document.write(`D-day: ${diffDate}일 남았습니다.<br>`);
+
+    // 3) Set 함수
+    document.write('<h3>Set 함수</h3>');
+    let d = new Date();
+    document.write(d,'<br>');
+    d.setFullYear(2020);
+    document.write(d,'<br>');
+    
+    // 날짜를 6개월 전으로 설정
+    d = new Date();
+    d.setFullYear(d.getFullYear(),d.getMonth() -6)
+    document.write(d,'<br>');
+    
+    // 날짜를 지난 달의 마지막 날로 설정
+    d = new Date();
+    d.setMonth(d.getMonth(), 0); // 0: 지난달 말일
+    document.write(d,'<br>');
     </script>
 </body>
 </html>
