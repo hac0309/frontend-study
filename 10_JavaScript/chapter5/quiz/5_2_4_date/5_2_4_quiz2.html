@@ -24,25 +24,25 @@
     const day = date.getDay();
     switch (day) {
       case 0:
-        document.write('SUN');
+        document.write('SUN','<br>');
         break;
       case 1:
-        document.write('MON');
+        document.write('MON','<br>');
         break;
       case 2:
-        document.write('TUE');
+        document.write('TUE','<br>');
         break;
       case 3:
-        document.write('WED');
+        document.write('WED','<br>');
         break;
       case 4:
-        document.write('THU');
+        document.write('THU','<br>');
         break;
       case 5:
-        document.write('FRI');
+        document.write('FRI','<br>');
         break;
       case 5:
-        document.write('SAT');
+        document.write('SAT','<br>');
         break;
     
       default:
@@ -50,6 +50,8 @@
     }
     
     // 풀이2-2
+    const dayList = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
+    document.write(dayList[date.getDay()], '<br>');
     
   </script>
 </head>

@@ -20,7 +20,8 @@
     const someHours = someday.getHours();
     const someMinutes = someday.getMinutes();
     
-    document.write(`${someYear}년 ${someMonth+1}월 ${someDate}일 오전 ${someHours}시 ${someMinutes}분`);
+    document.write(`${someYear}년 ${someMonth+1}월 ${someDate}일 오전 ${someHours}시 ${someMinutes}분 <br>`);
+    document.write(someday.toLocaleString(),'<br>');
   </script>
 </head>
 <body>
