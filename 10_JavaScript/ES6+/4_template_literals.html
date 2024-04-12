@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>4_template_literals</title>
+</head>
+<body>
+  <script>
+    // 탬플릿 리터럴
+    // 백틱(``) 기호를 사용하여 문자열 삽입
+
+    // 1. 문자열 삽입
+    // ES5
+    var name = 'chacha';
+    var greeting = 'Hello my name is ' + name;
+    console.log(greeting);
+
+    // ES6
+    const name2 = 'chacha';
+    const greeting2 = `Hello my name is ${name}`;
+    console.log(greeting2);
+
+    // 2. 표현식 삽입
+    // ES5
+    var exp1 = 1;
+    var exp2 = 10;
+    console.log('1 * 10 = ' + (exp1 * exp2));
+
+    // ES6
+    var exp3 = 1;
+    var exp4 = 10;
+    console.log(`1 * 10 = ${exp3 * exp4}`);
+
+    // 3. 여러 줄 문자열 생성
+    // ES5: 각 행마다 백슬래시를 삽입해야 함
+    var text1 = 'hello, \
+    my name is chacha\
+    how are you?';
+    console.log(text1);
+
+    // 이스케이프 문자로 줄바꿈 넣기
+    var text2 = 'hello, \nmy name is chacha\nhow are you?';
+    console.log(text2);
+
+    // ES6: 전체를 백틱으로 감싸기만 하면 됨
+    const content = `hello, 
+my name is chacha
+how are you?`;
+    console.log(content);
+  </script>
+</body>
+</html>
