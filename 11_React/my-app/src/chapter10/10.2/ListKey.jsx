@@ -29,9 +29,7 @@ function ListKey() {
     <>
       {/* <input type="text" value={value} onChange={(e) => { setValue(e.target.value); }}/> */}
       <input type="text" value={value} onKeyDown={(e) => {
-        if (e.key === 'Enter') {
-          addToList();
-        }
+        if (e.key === 'Enter') {addToList()}
       }} onChange={(e) => { setValue(e.target.value)}}/>
       <button type="button" onClick={addToList}>추가</button>
       <ul>
