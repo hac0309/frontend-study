@@ -44,6 +44,8 @@ function SignUp() {
         <input 
           type="radio"
           name="gender"
+          value="man"
+          checked={gender === "man"}
         />
         남자
       </label>
@@ -51,6 +53,8 @@ function SignUp() {
         <input
           type="radio"
           name="gender"
+          value="woman"
+          checked={gender === "woman"}
         />
         여자
       </label>
