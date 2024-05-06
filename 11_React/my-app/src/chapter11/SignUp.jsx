@@ -37,7 +37,7 @@ function SignUp() {
     });
   };
 
-  const handleSubmit = (e) => {;
+  const handleSubmit = (e) => {
     e.preventDefault();
     alert(`이름: ${name}, 성별: ${gender}`);
   };
