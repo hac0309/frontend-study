@@ -23,45 +23,52 @@ import { useState } from "react";
 function SignUp() {
   const [inputs, setInputs] = useState({
     name: '',
-    gender: 'man'
+    gender: '남자'
   });
 
   const {name, gender} = inputs;
 
+  const handleChangeGender = (e) => {
+    // setInputs(e.target.value);
+    const {name, value} = e.target;
+    setInputs({
+      ...inputs,
+      [name] : value
+    });
+  };
+
+  const handleSubmit = (e) => {;
+    e.preventDefault();
+    alert(`이름: ${name}, 성별: ${gender}`);
+  };
+
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <label>
         이름:
         <input 
-          type="textarea"
+          type="text"
+          name="name"
           value={name}
+          onChange={handleChangeGender}
         />
       </label>
 
       <br />
       <label>
         성별:
-        <input 
-          type="radio"
+        <select 
           name="gender"
-          value="man"
-          checked={gender === "man"}
-        />
-        남자
-      </label>
-      <label>
-        <input
-          type="radio"
-          name="gender"
-          value="woman"
-          checked={gender === "woman"}
-        />
-        여자
+          value={gender} 
+          onChange={handleChangeGender} >
+          <option value= "남자">남자</option>
+          <option value= "여자">여자</option>
+        </select>
       </label>
 
       <br />
 
-      <button>제출</button>
+      <button type="submit">제출</button>
     </form>
   );
 };
