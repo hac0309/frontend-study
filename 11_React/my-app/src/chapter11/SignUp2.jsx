@@ -19,35 +19,25 @@ import { useState } from "react";
 // 2) 각각의 state를 여러 개 만들어도 되고 객체 형태로 한번에 관리해도 됨
 
 
-// 하나의 State로 관리
-function SignUp() {
-  const [inputs, setInputs] = useState({
-    name: '',
-    gender: '남자'
-  });
+function SignUp2() {
+  // 여러개의 State로 관리 시
+  const [name, setName] = useState('');
+  const [gender, setGender] = useState('남자');
 
-  // 구조 분해 할당  / 안써주면 inputs.name , inputs.gender 이렇게 쓰면 됨.....
-  const {name, gender} = inputs;
+  const handleChangeName = (e) => {
+    setName(e.target.value);
+  };
 
-  const handleChangeInput = (e) => {
-    const {name, value} = e.target; // 얘도 안해줄거면 e.target.name , e.target.value.........
-
-    // 방법1 차근차근 방법~~~
-    // const copyObj = {...inputs};
-    // copyObj[name] = value;
-    // setInputs(copyObj);
-
-    // 방법2
-    setInputs({
-      ...inputs, // 기존의 inputs 객체를 복사한 뒤
-      [name] : value // name 값을 키로 갖는 속성을 동적으로 정의
-    });
+  const handleChangeGender = (e) => {
+    setGender(e.target.value);
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    alert(`이름: ${name}, 성별: ${gender}`);
-  };
+    alert(`이름: ${name} , 성별: ${gender}`)
+    e.preventDefault()
+  }
+
+
 
   return (
     <form onSubmit={handleSubmit}>
@@ -55,21 +45,18 @@ function SignUp() {
         이름:
         <input 
           type="text"
-          name="name" // 키값과 동일하게 작명
           value={name}
-          onChange={handleChangeInput}
-        />
+          onChange={handleChangeName}/>
       </label>
 
       <br />
       <label>
         성별:
         <select 
-          name="gender" // 키값과 동일하게 작명
           value={gender} 
-          onChange={handleChangeInput} >
-          <option>남자</option>
-          <option>여자</option>
+          onChange={handleChangeGender} >
+          <option value= "남자">남자</option>
+          <option value= "여자">여자</option>
         </select>
       </label>
 
@@ -80,4 +67,4 @@ function SignUp() {
   );
 };
 
-export default SignUp;
+export default SignUp2;
