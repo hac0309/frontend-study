@@ -41,6 +41,8 @@ import ProfileCard from './chapter13/ProfileCard';
 import Card from './chapter13/Card';
 import StyledPage from './chapter15/StyledPage';
 import Blocks from './chapter15/theme/Blocks';
+import ThemeApp from './chapter15/theme/ThemeApp';
+import ComponentVariable from './chapter7/7.6/ComponentVariable';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 // Root DOM Node에 리액트 컴포넌트를 렌더링 하도록 하는 함수(React 엘리먼트를 DOM 엘리먼트로 렌더링하는 역할)
@@ -69,6 +71,7 @@ root.render(
 
 // 7장 예제
 // {/* <Counter/> */}
+<ComponentVariable/>
 
 
 // 8장 예제
@@ -115,7 +118,8 @@ root.render(
 // {/* <StyledPage/> */}
 
 // 15장 예제
-<Blocks/>
+// {/* <Blocks/> */}
+// {/* <ThemeApp/> */}
 );
 
 

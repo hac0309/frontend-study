@@ -41,7 +41,7 @@ function TodoTemplate(props) {
   return (
     <TodoTemplateWrapper>
       {/* <AppTitle>일정 관리</AppTitle> */}
-      <div className="app-title">일정 관리</div>
+      <div className="app-title">나의 뇌</div>
       <div className="content">{children}</div>
     </TodoTemplateWrapper>
   );
