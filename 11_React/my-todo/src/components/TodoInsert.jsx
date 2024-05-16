@@ -62,7 +62,7 @@ function TodoInsert({ onInsert }) {
 
   return (
     <TodoInsertWrapper onSubmit={handleSubmit}>
-      <StyledInput type="text" value={value} placeholder="할 일을 입력하세요." onChange={handleChange}/>
+      <StyledInput type="text" value={value} placeholder="무엇을 해야 할까요..." onChange={handleChange}/>
       <StyledButton type="submit">
         <AddIcon />
       </StyledButton>
