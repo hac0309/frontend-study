@@ -6,6 +6,7 @@ import TodoListItem from "./components/TodoListItem";
 import TodoList from "./components/TodoList";
 import { useEffect, useRef, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
+import Modal from "./components/Modal";
 
 
 // 패키지 설치
@@ -35,22 +36,47 @@ function App() {
   // id, 내용, 완료 여부
   // TodoList에 props로 전달
   const [todos, setTodos] = useState([
-    {
-      id: 1,
-      text: '정처기 끝장나게 보기~ (뭐가 끝장일까..)',
-      done: false
-    },
-    {
-      id: 2,
-      text: '끝내주게 숨쉬기',
-      done: true
-    },
-    {
-      id: 3,
-      text: '강쥐들과 끝장나는 산책하기',
-      done: false
-    }
+    // {
+    //   id: 1,
+    //   text: '정처기 끝장나게 보기~ (뭐가 끝장일까..)',
+    //   done: false
+    // },
+    // {
+    //   id: 2,
+    //   text: '끝내주게 숨쉬기',
+    //   done: true
+    // },
+    // {
+    //   id: 3,
+    //   text: '강쥐들과 끝장나는 산책하기',
+    //   done: false
+    // }
   ]);
+
+  const [showModal, setShowModal] = useState(false); // 모달상태
+  const [editTodo, setEditTodo] = useState({}); // 현재 수정할 todo의 상태
+
+  const handleOpenModal = (id) => {
+    // 모달을 열면서 현재 수정할 todo를 state에 저장
+    setEditTodo(todos.find(todo => todo.id === id));
+    setShowModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
+
+  const handleChange = (e) => { // 제어 컴포넌트로 관리
+    setEditTodo({
+      ...editTodo,
+      text: e.target.value
+    })
+  };
+
+  const handleEdit = () => { // 실제 수정
+    setTodos(todos.map(todo => todo.id === editTodo.id ? editTodo: todo));
+    handleCloseModal();
+  };
 
   // 로컬 스토리지에서 가져오기
   useEffect(()=> {
@@ -135,9 +161,25 @@ function App() {
       <GlobalStyle />
       <TodoTemplate>
         <TodoInsert onInsert={handleInsert} />
-        <TodoList todos={todos} onRemove={handleRemove} onToggle={handleToggle} />
+        <TodoList todos={todos} onRemove={handleRemove} onToggle={handleToggle} onModal={handleOpenModal} />
         {/* <div>투두 목록</div> */}
       </TodoTemplate>
+
+      {/* 수정하기 모달 */}
+      {showModal && (
+      <Modal
+        title = "할 일 수정"
+        closeModal={handleCloseModal}
+        onEdit={handleEdit}
+      >
+        <input 
+          type="text" 
+          value={editTodo.text} 
+          onChange={handleChange} 
+          onKeyDown={e => {if (e.key === 'Enter') handleEdit()}}
+        />
+      </Modal>
+      )}
     </>
   );
 }

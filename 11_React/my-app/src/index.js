@@ -48,6 +48,7 @@ import Timer from './chapter7/7.3/ex2/Timer';
 import TimerContainer from './chapter7/7.3/ex2/TimerContainer';
 import EffectSummary from './chapter7/7.3/ex3/EffectSummary';
 import EffectContainer from './chapter7/7.3/ex3/EffectContainer';
+import SimpleRouter from './chapter16/SimpleRouter';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 // Root DOM Node에 리액트 컴포넌트를 렌더링 하도록 하는 함수(React 엘리먼트를 DOM 엘리먼트로 렌더링하는 역할)
@@ -81,7 +82,7 @@ root.render(
 // {/* <Timer/> */}
 // {/* <TimerContainer/> */}
 // {/* <EffectSummary/> */}
-<EffectContainer/>
+// {/* <EffectContainer/> */}
 
 
 // 8장 예제
@@ -130,6 +131,9 @@ root.render(
 // 15장 예제
 // {/* <Blocks/> */}
 // {/* <ThemeApp/> */}
+
+// 16장 예제
+<SimpleRouter/>
 );
 
 
