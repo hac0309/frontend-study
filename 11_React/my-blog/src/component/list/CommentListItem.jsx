@@ -13,14 +13,18 @@ const Wrapper = styled.div`
   cursor: pointer;
 
   &:hover {
-    background: lightgrey;
+    background: #fff0f0;
   }
 `;
 
-function CommentListItem() {
+// 댓글의 내용만 표시해주는 컴포넌트
+function CommentListItem(props) {
+  const { comment } = props;
+  
   return (
-    <>
-    </>
+    <Wrapper>
+      <p>{comment.content}</p>
+    </Wrapper>
   );
 };
 
