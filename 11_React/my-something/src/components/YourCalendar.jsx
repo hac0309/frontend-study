@@ -16,6 +16,7 @@ export const StyledCalendarWrapper = styled.div`
     background: #fdfdea;
     border-radius: 20px;
     width: 600px;
+    margin-top: 6rem;
     /* height: 380px; */
   }
 

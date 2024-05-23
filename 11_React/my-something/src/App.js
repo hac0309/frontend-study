@@ -5,6 +5,8 @@ import './App.css';
 import MainPage from "./components/MainPage";
 import "react-calendar/dist/Calendar.css";
 import MyCalendar from "./components/MyCalender";
+import YourCalendar from "./components/YourCalendar";
+import TodoHeader from "./components/TodoHeader";
 
 
 
@@ -20,7 +22,7 @@ const GlobalStyle = createGlobalStyle`
     font-style: normal;
 }
 
-*{
+* {
   font-family: 'MaplestoryOTFBold';
 }
 `;
@@ -29,8 +31,9 @@ function App() {
   return (
     <>
     <GlobalStyle/>
+    <YourCalendar/>
     <MainPage/>
-    {/* <MyCalendar/> */}
+    {/* <TodoHeader/> */}
     </>
   );
 }
