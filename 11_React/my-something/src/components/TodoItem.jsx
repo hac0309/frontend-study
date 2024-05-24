@@ -2,6 +2,7 @@ import { styled , css } from "styled-components";
 import { CiCircleCheck } from "react-icons/ci";
 import { FaCheckCircle, FaRegCheckCircle, FaRegEdit } from "react-icons/fa";
 import { IoMdRemoveCircle } from "react-icons/io";
+import { useState } from "react";
 
 const TodoItemWrapper = styled.div`
   padding: 1rem;
@@ -61,22 +62,54 @@ const Remove = styled.div`
   &:hover {
     color: red
   }
+  
+`;
+
+const Input = styled.input`
+  flex: 1;
+  margin-left: 1rem;
+  font-size: 30px;
+  padding: 0.5rem;
 `;
 
 function TodoItem(props) {
 
-  const { todo } = props;
+  const { todo , onDelete, onCheck, onUpdate } = props;
+  const [edit, setEdit] = useState(false);
+  const [newText, setNewText] = useState(todo.text);
+
+  const handleContent = () => {
+    if (!todo.done) { // todo.done = false
+      setEdit(true);
+    }
+  };
+
+  const handleInput = (e) => {
+    setNewText(e.target.value);
+  }
+
+  const handleInputChange = () => {
+    setEdit(false);
+    if (newText.trim()) {
+      onUpdate(todo.id, newText);
+    } else {
+      setNewText(todo.text);
+    }
+  }
+
+  const handleInputEnter = (e) => {
+    if (e.key === 'Enter') {
+      handleInputChange();
+    }
+  }
   
   return (
     <TodoItemWrapper>
-      <Clear done={todo.done}>
+      <Clear done={todo.done} onClick={()=>{onCheck(todo.id)}}>
         {todo.done ? <FaCheckCircle /> : <FaRegCheckCircle />}
       </Clear>
-      <Content done={todo.done}>{todo.text}</Content>
-      <Edit>
-        <FaRegEdit/>
-      </Edit>
-      <Remove>
+      {edit ? <Input value={newText} onChange={handleInput} onBlur={handleInputChange} autoFocus onKeyDown={handleInputEnter}/> : <Content done={todo.done} onClick={handleContent}>{todo.text} </Content> }
+      <Remove onClick={() => {onDelete(todo.id)}}>
         <IoMdRemoveCircle/>
       </Remove>
     </TodoItemWrapper>

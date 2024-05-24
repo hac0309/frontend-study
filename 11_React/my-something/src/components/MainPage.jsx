@@ -6,12 +6,12 @@ import TodoList from "./TodoList";
 
 
 function MainPage(props) {
-  const { todos , onInsert } = props;
+  const { todos , onInsert , onDelete, onCheck, count, onUpdate ,selectedDate } = props;
   return (
     <>
-      <TodoHeader>
+      <TodoHeader count={count} selectedDate={selectedDate}>
         <TodoInput onInsert={onInsert} />
-        <TodoList todos={todos} />
+        <TodoList todos={todos} onDelete={onDelete} onCheck={onCheck} onUpdate={onUpdate}/>
       </TodoHeader>
     </>
   );

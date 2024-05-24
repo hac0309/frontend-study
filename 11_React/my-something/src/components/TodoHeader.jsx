@@ -29,23 +29,17 @@ const TodoWrapper = styled.div`
 `;
 
 function TodoHeader(props) {
-  const { children } = props;
-  
-  const date = new Date();
-  const getDate = () => {
-    const days = ['일','월','화','수','목','금','토'];
-    const month = date.getMonth();
-    const day = date.getDate();
-    const DayOfTheWeek = days[date.getDay()];
-    return `${month + 1}월 ${day}일 ${DayOfTheWeek}요일`
-  }
+  const { children, count,selectedDate } = props;
+
 
   return (
     <TodoWrapper>
       <div className="title">TODOLIST</div>
       <div className="count-date">
-        <div className="count">{}개 남았어요!</div>
-        <div className="date">{getDate()}</div>
+        <div className="count">{
+          count === 0 ? '모두 완료했어요!': count+'개 남았습니다'
+        }</div>
+        <div className="date">{selectedDate.toDateString()}</div>
       </div>
       <div className="content">{children}</div>
     </TodoWrapper>

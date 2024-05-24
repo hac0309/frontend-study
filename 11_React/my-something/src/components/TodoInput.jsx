@@ -44,12 +44,16 @@ function TodoInput(props) {
     setValue(e.target.value);
   }
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
     // 빈값 이면 모달창 띄우기 만들기
-  }
+
+    e.preventDefault();
+    onInsert(value);
+    setValue('');
+  };
 
   return (
-    <TodoInputWrapper>
+    <TodoInputWrapper onSubmit={handleSubmit}>
       <StyledInput type="text" value={value} placeholder="Todo..." onChange={handleInputChange}/>
       <StyledBtn type="submit">
         +

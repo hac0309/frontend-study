@@ -44,7 +44,10 @@ function App() {
       done: false
     }
   ]);
+  
+  const [selectedDate, setSelectedDate] = useState(new Date());
 
+  // 추가
   const handleInsert = (text) => {
     const todo = {
       id: uuid(),
@@ -55,13 +58,43 @@ function App() {
     setTodos(todos.concat(todo));
   }
 
-  
+  // 삭제
+  const handleDelete = (id) => {
+    setTodos(todos.filter((todo) => {
+      return todo.id !== id;
+    }))
+  }
+
+  // 업데이트
+  const handleUpdate = (id, newText) => {
+    setTodos(todos.map(todo => (
+      todo.id === id ? { ...todo, text: newText } : todo
+    )));
+  };
+
+  // 완료체크
+  const handleCheck = (id) => {
+    setTodos(todos.map((todo) => {
+      return todo.id === id ? {...todo, done: !todo.done} : todo;
+    }))
+  }
+
+  // 남은 할일
+  const countClearTodos = todos.filter(todo => !todo.done).length;
 
   return (
     <>
-    <GlobalStyle/>handleInsert
-    <YourCalendar/>
-    <MainPage todos={todos} onInsert={handleInsert}/>
+    <GlobalStyle/>
+    <YourCalendar count={countClearTodos} selectedDate={selectedDate} onDateClick={setSelectedDate}/>
+    <MainPage 
+      todos={todos} 
+      onInsert={handleInsert} 
+      onDelete={handleDelete} 
+      onCheck={handleCheck}
+      count={countClearTodos}
+      onUpdate={handleUpdate}
+      selectedDate={selectedDate}
+    />
     {/* <TodoHeader/> */}
     </>
   );

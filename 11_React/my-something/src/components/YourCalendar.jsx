@@ -88,7 +88,11 @@ export const StyledCalendar = styled(Calendar)``;
 
 
 
-function YourCalendar() {
+function YourCalendar(props) {
+const { count, onDateClick, selectedDate } = props;
+
+
+
 
 
 
@@ -99,6 +103,9 @@ function YourCalendar() {
         prev2Label={null}
         next2Label={null}
         locale="en"
+        tileContent={count === 0 ? '❤': count}
+        value={selectedDate}
+        onChange={onDateClick}
       />
     </StyledCalendarWrapper>
   );
