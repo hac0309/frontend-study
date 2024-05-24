@@ -2,7 +2,6 @@ import { createGlobalStyle } from "styled-components";
 import  reset, {Reset}  from "styled-reset";
 import TodoTemplate from "./components/TodoTemplate";
 import TodoInsert from "./components/TodoInsert";
-import TodoListItem from "./components/TodoListItem";
 import TodoList from "./components/TodoList";
 import { useEffect, useRef, useState } from "react";
 import { v4 as uuidv4 } from "uuid";

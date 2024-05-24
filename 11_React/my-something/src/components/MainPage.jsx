@@ -5,12 +5,13 @@ import TodoInput from "./TodoInput";
 import TodoList from "./TodoList";
 
 
-function MainPage() {
+function MainPage(props) {
+  const { todos , onInsert } = props;
   return (
     <>
       <TodoHeader>
-        <TodoInput/>
-        <TodoList/>
+        <TodoInput onInsert={onInsert} />
+        <TodoList todos={todos} />
       </TodoHeader>
     </>
   );

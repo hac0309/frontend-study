@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { styled } from "styled-components";
 // import { MdAdd } from "react-icon";
 
@@ -34,11 +35,23 @@ const StyledBtn = styled.button`
   }
 `;
 
-function TodoInput() {
+function TodoInput(props) {
+  const { onInsert } = props;
+
+  const [value, setValue] = useState('');
+
+  const handleInputChange = (e) => {
+    setValue(e.target.value);
+  }
+
+  const handleSubmit = () => {
+    // 빈값 이면 모달창 띄우기 만들기
+  }
+
   return (
     <TodoInputWrapper>
-      <StyledInput type="text" placeholder="Todo..."/>
-      <StyledBtn>
+      <StyledInput type="text" value={value} placeholder="Todo..." onChange={handleInputChange}/>
+      <StyledBtn type="submit">
         +
       </StyledBtn>
     </TodoInputWrapper>

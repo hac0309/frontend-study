@@ -1,4 +1,4 @@
-import { styled } from "styled-components";
+import { styled , css } from "styled-components";
 import { CiCircleCheck } from "react-icons/ci";
 import { FaCheckCircle, FaRegCheckCircle, FaRegEdit } from "react-icons/fa";
 import { IoMdRemoveCircle } from "react-icons/io";
@@ -16,6 +16,7 @@ const Clear = styled.div`
 
   svg {
     font-size : 30px;
+    color: ${props => props.done && '#ffe555'};
   }
 `;
 
@@ -23,6 +24,13 @@ const Content = styled.div`
   flex: 1;
   margin-left: 1rem;
   font-size: 30px;
+
+  ${props => props.done &&
+    css`
+      color: grey;
+      text-decoration: line-through;
+    `
+  }
 `;
 
 const Edit = styled.div`
@@ -55,14 +63,16 @@ const Remove = styled.div`
   }
 `;
 
-function TodoItem() {
+function TodoItem(props) {
+
+  const { todo } = props;
+  
   return (
     <TodoItemWrapper>
-      <Clear>
-        <FaRegCheckCircle />
-        {/* <FaCheckCircle /> */}
+      <Clear done={todo.done}>
+        {todo.done ? <FaCheckCircle /> : <FaRegCheckCircle />}
       </Clear>
-      <Content>밥먹기</Content>
+      <Content done={todo.done}>{todo.text}</Content>
       <Edit>
         <FaRegEdit/>
       </Edit>

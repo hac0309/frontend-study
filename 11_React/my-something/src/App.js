@@ -1,14 +1,11 @@
 import styled, { createGlobalStyle } from "styled-components";
 import { reset } from "styled-reset";
-import logo from './logo.svg';
 import './App.css';
 import MainPage from "./components/MainPage";
 import "react-calendar/dist/Calendar.css";
-import MyCalendar from "./components/MyCalender";
 import YourCalendar from "./components/YourCalendar";
-import TodoHeader from "./components/TodoHeader";
-
-
+import { useState } from "react";
+import { v4 as uuid } from "uuid";
 
 
 
@@ -27,12 +24,44 @@ const GlobalStyle = createGlobalStyle`
 }
 `;
 
+
+
 function App() {
+  const [todos, setTodos] = useState([
+    {
+      id: 1,
+      text: '정처기 끝장나게 보기~ (실패..)',
+      done: false
+    },
+    {
+      id: 2,
+      text: '끝내주게 숨쉬기',
+      done: true
+    },
+    {
+      id: 3,
+      text: '강쥐들과 끝장나는 산책하기',
+      done: false
+    }
+  ]);
+
+  const handleInsert = (text) => {
+    const todo = {
+      id: uuid(),
+      text,
+      done: false
+    };
+
+    setTodos(todos.concat(todo));
+  }
+
+  
+
   return (
     <>
-    <GlobalStyle/>
+    <GlobalStyle/>handleInsert
     <YourCalendar/>
-    <MainPage/>
+    <MainPage todos={todos} onInsert={handleInsert}/>
     {/* <TodoHeader/> */}
     </>
   );

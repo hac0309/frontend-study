@@ -5,10 +5,14 @@ const TodoListWrapper = styled.div`
 
 `;
 
-function TodoList() {
+function TodoList(props) {
+  const { todos } = props;
+
   return (
     <TodoListWrapper>
-      <TodoItem/>
+      {todos.map((todo) => {
+        return <TodoItem key={todo.id} todo={todo} />
+      })}
     </TodoListWrapper>
   );
 };
