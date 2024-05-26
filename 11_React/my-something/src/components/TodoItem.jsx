@@ -34,20 +34,6 @@ const Content = styled.div`
   }
 `;
 
-const Edit = styled.div`
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  color: #705e00;
-
-  svg {
-    font-size: 26px;
-  }
-
-  &:hover {
-    color: #4a3e00;
-  }
-`;
 
 const Remove = styled.div`
   display: flex;
@@ -77,6 +63,7 @@ function TodoItem(props) {
   const { todo , onDelete, onCheck, onUpdate } = props;
   const [edit, setEdit] = useState(false);
   const [newText, setNewText] = useState(todo.text);
+  
 
   const handleContent = () => {
     if (!todo.done) { // todo.done = false

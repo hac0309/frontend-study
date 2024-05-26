@@ -11,7 +11,13 @@ function MainPage(props) {
     <>
       <TodoHeader count={count} selectedDate={selectedDate}>
         <TodoInput onInsert={onInsert} />
-        <TodoList todos={todos} onDelete={onDelete} onCheck={onCheck} onUpdate={onUpdate}/>
+        <TodoList 
+          todos={todos} 
+          onDelete={onDelete} 
+          onCheck={onCheck} 
+          onUpdate={onUpdate}
+          
+        />
       </TodoHeader>
     </>
   );
