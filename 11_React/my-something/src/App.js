@@ -4,7 +4,7 @@ import './App.css';
 import MainPage from "./components/MainPage";
 import "react-calendar/dist/Calendar.css";
 import YourCalendar from "./components/YourCalendar";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { v4 as uuid } from "uuid";
 
 
@@ -28,21 +28,21 @@ const GlobalStyle = createGlobalStyle`
 
 function App() {
   const [todos, setTodos] = useState([
-    {
-      id: 1,
-      text: '정처기 끝장나게 보기~ (실패..)',
-      done: false
-    },
-    {
-      id: 2,
-      text: '끝내주게 숨쉬기',
-      done: true
-    },
-    {
-      id: 3,
-      text: '강쥐들과 끝장나는 산책하기',
-      done: false
-    }
+    // {
+    //   id: 1,
+    //   text: '정처기 끝장나게 보기~ (실패..)',
+    //   done: false
+    // },
+    // {
+    //   id: 2,
+    //   text: '끝내주게 숨쉬기',
+    //   done: true
+    // },
+    // {
+    //   id: 3,
+    //   text: '강쥐들과 끝장나는 산책하기',
+    //   done: false
+    // }
   ]);
   
   const [selectedDate, setSelectedDate] = useState(new Date());
@@ -81,6 +81,17 @@ function App() {
 
   // 남은 할일
   const countClearTodos = todos.filter(todo => !todo.done).length;
+  
+  // 로컬 스토리지 가져오기
+  useEffect(() => {
+    const dbTodos = localStorage.getItem('todos');
+    setTodos(JSON.parse(dbTodos));
+  },[]);
+
+  // 로컬 스토리지에 저장하기
+  useEffect(() => {
+    localStorage.setItem('todos',JSON.stringify(todos));
+  },[todos]);
 
   return (
     <>

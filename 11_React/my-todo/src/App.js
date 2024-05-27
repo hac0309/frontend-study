@@ -81,7 +81,7 @@ function App() {
   useEffect(()=> {
     const dbTodos = localStorage.getItem('todos'); // 초기에 'todos'가 없으면 null을 반환함
     setTodos(JSON.parse(dbTodos));
-  },[]);
+  },[todos]);
 
 
   // 로컬 스토리지에 저장하기(주의: DB가 아님, DB처러 ㅁ쓰면 안됨!!!!!⛏)

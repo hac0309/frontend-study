@@ -103,7 +103,8 @@ const { count, onDateClick, selectedDate } = props;
         prev2Label={null}
         next2Label={null}
         locale="en"
-        tileContent={count === 0 ? '👍': count}
+        tileContent={ count === 0 ? '👍': count}
+        // tileContent={ }
         value={selectedDate}
         onChange={onDateClick}
       />

@@ -16,7 +16,7 @@ const Title = styled.div`
 
 function TodoList(props) {
   const { todos , onDelete, onCheck, onUpdate} = props;
-  const falseTodos = todos.filter((todo) => !todo.done);
+  const falseTodos = todos.filter((todo) => !todo.done); 
   const trueTodos = todos.filter((todo) => todo.done);
 
   return (
