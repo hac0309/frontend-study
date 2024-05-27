@@ -49,21 +49,29 @@ function App() {
 
   // 추가
   const handleInsert = (text) => {
+    // const todo = {
+    //   id: uuid(),
+    //   text,
+    //   done: false
+    // }
+    // setTodos(todos.concat(todo));
     const todo = {
       id: uuid(),
       text,
-      done: false
+      done: false,
+      date: selectedDate.toISOString().split('T')[0], // YYYY-MM-DD
     };
+    setTodos([...todos, todo]);
 
-    setTodos(todos.concat(todo));
-  }
+
+  };
 
   // 삭제
   const handleDelete = (id) => {
     setTodos(todos.filter((todo) => {
       return todo.id !== id;
     }))
-  }
+  };
 
   // 업데이트
   const handleUpdate = (id, newText) => {
@@ -77,28 +85,40 @@ function App() {
     setTodos(todos.map((todo) => {
       return todo.id === id ? {...todo, done: !todo.done} : todo;
     }))
-  }
+  };
 
   // 남은 할일
   const countClearTodos = todos.filter(todo => !todo.done).length;
   
   // 로컬 스토리지 가져오기
+  // useEffect(() => {
+  //   const dbTodos = localStorage.getItem('todos');
+  //   setTodos(JSON.parse(dbTodos));
+  // },[]);
   useEffect(() => {
-    const dbTodos = localStorage.getItem('todos');
-    setTodos(JSON.parse(dbTodos));
-  },[]);
+    const dbTodos = JSON.parse(localStorage.getItem('Todo_Data') || '[]');
+    setTodos(dbTodos);
+  }, []);
 
   // 로컬 스토리지에 저장하기
+  // useEffect(() => {
+  //   localStorage.setItem('todos',JSON.stringify(todos));
+  // },[todos]);
   useEffect(() => {
-    localStorage.setItem('todos',JSON.stringify(todos));
-  },[todos]);
+    localStorage.setItem('Todo_Data', JSON.stringify(todos));
+  }, [todos]);
 
+  // 필터된 날짜 할일 
+  const filteredTodos = todos.filter(todo => 
+    todo.date === selectedDate.toISOString().split('T')[0]
+  );
   return (
     <>
     <GlobalStyle/>
-    <YourCalendar count={countClearTodos} selectedDate={selectedDate} onDateClick={setSelectedDate}/>
+    <YourCalendar todos={todos} selectedDate={selectedDate} onDateClick={setSelectedDate}/>
     <MainPage 
-      todos={todos} 
+      // todos={todos} 
+      todos={filteredTodos} 
       onInsert={handleInsert} 
       onDelete={handleDelete} 
       onCheck={handleCheck}

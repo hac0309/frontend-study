@@ -5,13 +5,14 @@ const TodoListWrapper = styled.div`
   margin-bottom: 2rem;
 `;
 
-const Title = styled.div`
+const Title = styled.h2`
   font-size: 24px;
   padding: 15px;
   /* border-bottom: 1px solid #f8d086; */
   color: #6f8fff;
   /* background-color: #f8ccfc; */
-  border-radius: 5px;
+  /* border-radius: 5px; */
+  text-align: center;
 `;
 
 function TodoList(props) {

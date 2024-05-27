@@ -7,6 +7,8 @@ import TodoList from "./TodoList";
 
 function MainPage(props) {
   const { todos , onInsert , onDelete, onCheck, count, onUpdate ,selectedDate } = props;
+  
+
   return (
     <>
       <TodoHeader count={count} selectedDate={selectedDate}>

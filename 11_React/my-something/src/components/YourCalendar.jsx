@@ -79,7 +79,11 @@ export const StyledCalendarWrapper = styled.div`
 
   // 오늘날짜
   .react-calendar__tile--now {
-    background: #feffc0;
+    background: #ffebc0;
+
+    abbr {
+      color: #1400ae;
+    }
   }
 `
 // 캘린더를 불러옴
@@ -89,9 +93,25 @@ export const StyledCalendar = styled(Calendar)``;
 
 
 function YourCalendar(props) {
-const { count, onDateClick, selectedDate } = props;
+const { todos, onDateClick, selectedDate } = props;
 
+  // 선택 날짜 todo 갯수
+  const countTodosForDate = (date) => {
+    return todos.filter(todo => todo.date === date && !todo.done).length;
+  };
 
+  // 각 날짜에 대한 Todo 개수를 표시할 함수
+  const tileContent = ({ date }) => {
+    const formattedDate = date.toISOString().split('T')[0];
+    const count = countTodosForDate(formattedDate);
+    if (count === 0 && todos.some(todo => todo.date === formattedDate)) {
+      return '👏'; 
+    } else if (count > 0) {
+      return count; 
+    } else {
+      return null; 
+    }
+  };
 
 
 
@@ -103,7 +123,7 @@ const { count, onDateClick, selectedDate } = props;
         prev2Label={null}
         next2Label={null}
         locale="en"
-        tileContent={ count === 0 ? '👍': count}
+        tileContent={tileContent}
         // tileContent={ }
         value={selectedDate}
         onChange={onDateClick}
