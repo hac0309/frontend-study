@@ -3,9 +3,10 @@ import { styled } from "styled-components";
 const TodoWrapper = styled.div`
   font-family: 'MaplestoryOTFBold';
   width: 592px;
-  margin: 1rem auto 0;
+  margin: 1rem 2rem 0 0;
   border-radius: 4px;
   overflow: hidden;
+  padding: 10px;
 
   .title {
     font-size: 60px;
@@ -13,13 +14,14 @@ const TodoWrapper = styled.div`
     justify-content: center; 
     background: #ffe6a2;
     padding: 10px;
+    border-radius: 15px;
   }
 
   .count-date {
     display: flex;
     justify-content: space-between;
     padding: 10px;
-    border-bottom: 1px solid #ffe6a2;
+    /* border-bottom: 1px solid #ffe6a2; */
 
     .date {
       color: brown;

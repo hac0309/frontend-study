@@ -22,39 +22,26 @@ const GlobalStyle = createGlobalStyle`
 * {
   font-family: 'MaplestoryOTFBold';
 }
+
+.wrapper-group {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+
+  
+}
+
 `;
 
 
 
 function App() {
-  const [todos, setTodos] = useState([
-    // {
-    //   id: 1,
-    //   text: '정처기 끝장나게 보기~ (실패..)',
-    //   done: false
-    // },
-    // {
-    //   id: 2,
-    //   text: '끝내주게 숨쉬기',
-    //   done: true
-    // },
-    // {
-    //   id: 3,
-    //   text: '강쥐들과 끝장나는 산책하기',
-    //   done: false
-    // }
-  ]);
+  const [todos, setTodos] = useState([]);
   
   const [selectedDate, setSelectedDate] = useState(new Date());
 
   // 추가
   const handleInsert = (text) => {
-    // const todo = {
-    //   id: uuid(),
-    //   text,
-    //   done: false
-    // }
-    // setTodos(todos.concat(todo));
     const todo = {
       id: uuid(),
       text,
@@ -62,8 +49,6 @@ function App() {
       date: selectedDate.toISOString().split('T')[0], // YYYY-MM-DD
     };
     setTodos([...todos, todo]);
-
-
   };
 
   // 삭제
@@ -91,19 +76,12 @@ function App() {
   const countClearTodos = todos.filter(todo => !todo.done).length;
   
   // 로컬 스토리지 가져오기
-  // useEffect(() => {
-  //   const dbTodos = localStorage.getItem('todos');
-  //   setTodos(JSON.parse(dbTodos));
-  // },[]);
   useEffect(() => {
     const dbTodos = JSON.parse(localStorage.getItem('Todo_Data') || '[]');
     setTodos(dbTodos);
   }, []);
 
   // 로컬 스토리지에 저장하기
-  // useEffect(() => {
-  //   localStorage.setItem('todos',JSON.stringify(todos));
-  // },[todos]);
   useEffect(() => {
     localStorage.setItem('Todo_Data', JSON.stringify(todos));
   }, [todos]);
@@ -112,21 +90,23 @@ function App() {
   const filteredTodos = todos.filter(todo => 
     todo.date === selectedDate.toISOString().split('T')[0]
   );
+
+
   return (
     <>
     <GlobalStyle/>
-    <YourCalendar todos={todos} selectedDate={selectedDate} onDateClick={setSelectedDate}/>
-    <MainPage 
-      // todos={todos} 
-      todos={filteredTodos} 
-      onInsert={handleInsert} 
-      onDelete={handleDelete} 
-      onCheck={handleCheck}
-      count={countClearTodos}
-      onUpdate={handleUpdate}
-      selectedDate={selectedDate}
-    />
-    {/* <TodoHeader/> */}
+    <div className="wrapper-group">
+      <YourCalendar todos={todos} selectedDate={selectedDate} onDateClick={setSelectedDate}/>
+      <MainPage 
+        todos={filteredTodos} 
+        onInsert={handleInsert} 
+        onDelete={handleDelete} 
+        onCheck={handleCheck}
+        count={countClearTodos}
+        onUpdate={handleUpdate}
+        selectedDate={selectedDate}
+      />
+    </div>
     </>
   );
 }

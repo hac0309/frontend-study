@@ -19,13 +19,14 @@ const StyledInput = styled.input`
   &::placeholder {
     color: #f6cc57;
   }
-`;
+  `;
 
 const StyledBtn = styled.button`
   background-color: #ffe6a2;
   font-size: 30px;
   width: 60px;
   border: none;
+  border-radius: 15px;
   cursor: pointer;
   transition: 0.2s background ease-in;
 
