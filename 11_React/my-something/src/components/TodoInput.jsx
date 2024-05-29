@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { styled } from "styled-components";
+import Modal from "./Modal";
 // import { MdAdd } from "react-icon";
 
 
@@ -40,6 +41,7 @@ function TodoInput(props) {
   const { onInsert } = props;
 
   const [value, setValue] = useState('');
+  const [showModal, setShowModal] = useState(false);
 
   const handleInputChange = (e) => {
     setValue(e.target.value);
@@ -47,19 +49,30 @@ function TodoInput(props) {
 
   const handleSubmit = (e) => {
     // 빈값 이면 모달창 띄우기 만들기
-
-    e.preventDefault();
-    onInsert(value);
-    setValue('');
+    if (!value) {
+      setShowModal(true);
+      e.preventDefault();
+    } else {
+      e.preventDefault();
+      onInsert(value);
+      setValue('');
+    }
   };
 
+  const closeModal = () => {
+    setShowModal(false);
+  }
+
   return (
-    <TodoInputWrapper onSubmit={handleSubmit}>
-      <StyledInput type="text" value={value} placeholder="Todo..." onChange={handleInputChange}/>
-      <StyledBtn type="submit">
-        +
-      </StyledBtn>
-    </TodoInputWrapper>
+    <>
+      <TodoInputWrapper onSubmit={handleSubmit}>
+        <StyledInput type="text" value={value} placeholder="Todo..." onChange={handleInputChange}/>
+        <StyledBtn type="submit">
+          +
+        </StyledBtn>
+      </TodoInputWrapper>
+      {showModal? <Modal onClose={closeModal} title="경고" content="빈값은 등록할 수 없습니다." /> : null}
+    </>
   );
 };
 

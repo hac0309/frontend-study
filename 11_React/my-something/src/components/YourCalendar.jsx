@@ -50,6 +50,7 @@ export const StyledCalendarWrapper = styled.div`
     font-weight: 900;
     font-size: 40px;
     color: #6b0202;
+    width: 250px;
   }
 
   .react-calendar__month-view {
@@ -101,8 +102,9 @@ export const StyledCalendarWrapper = styled.div`
 const Count = styled.span`
   font-size: 32px;
   margin-top: 40px;
-  color: #03d9ff;
+  color: #c27e00;
 `;
+
 // 캘린더를 불러옴
 export const StyledCalendar = styled(Calendar)``;
 

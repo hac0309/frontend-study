@@ -3,6 +3,7 @@ import { CiCircleCheck } from "react-icons/ci";
 import { FaCheckCircle, FaRegCheckCircle, FaRegEdit } from "react-icons/fa";
 import { IoMdRemoveCircle } from "react-icons/io";
 import { useState } from "react";
+import Modal from "./Modal";
 
 const TodoItemWrapper = styled.div`
   padding: 1rem;
@@ -63,6 +64,7 @@ function TodoItem(props) {
   const { todo , onDelete, onCheck, onUpdate } = props;
   const [edit, setEdit] = useState(false);
   const [newText, setNewText] = useState(todo.text);
+  const [showModal, setShowModal] = useState(false);
   
 
   const handleContent = () => {
@@ -89,6 +91,14 @@ function TodoItem(props) {
       handleInputChange();
     }
   }
+
+  const handleConfirm = () => {
+    setShowModal(true);
+  }
+
+  const closeModal = () => {
+    setShowModal(false);
+  }
   
   return (
     <TodoItemWrapper>
@@ -96,7 +106,12 @@ function TodoItem(props) {
         {todo.done ? <FaCheckCircle /> : <FaRegCheckCircle />}
       </Clear>
       {edit ? <Input value={newText} onChange={handleInput} onBlur={handleInputChange} autoFocus onKeyDown={handleInputEnter}/> : <Content done={todo.done} onClick={handleContent}>{todo.text} </Content> }
-      <Remove onClick={() => {onDelete(todo.id)}}>
+      <Remove onClick={handleConfirm}>
+        {showModal && 
+          <Modal title="삭제 확인" content="TodoList를 정말 삭제하시겠습니까?">
+            <button type="button" className="btn-1" onClick={()=>onDelete(todo.id)}>확인</button>
+            <button type="button" className="btn-2" onClick={()=>closeModal}>취소</button>
+          </Modal>}
         <IoMdRemoveCircle/>
       </Remove>
     </TodoItemWrapper>

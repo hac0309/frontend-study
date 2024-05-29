@@ -6,6 +6,7 @@ import "react-calendar/dist/Calendar.css";
 import YourCalendar from "./components/YourCalendar";
 import { useEffect, useState } from "react";
 import { v4 as uuid } from "uuid";
+import Modal from "./components/Modal";
 
 
 
@@ -15,6 +16,13 @@ const GlobalStyle = createGlobalStyle`
   @font-face {
     font-family: 'MaplestoryOTFBold';
     src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/MaplestoryOTFBold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'S-CoreDream-3Light';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }

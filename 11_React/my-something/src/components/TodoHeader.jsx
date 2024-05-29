@@ -31,7 +31,7 @@ const TodoWrapper = styled.div`
 `;
 
 function TodoHeader(props) {
-  const { children, count,selectedDate } = props;
+  const { children, count, selectedDate } = props;
 
 
   return (
