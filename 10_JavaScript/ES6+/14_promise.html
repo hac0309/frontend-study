@@ -74,6 +74,102 @@
     // 정리:
     // 프로미스가 성공할 때의 값을 얻는 데 then()을 사용
     // 프로미스가 실패할 때의 오류를 처리하는데 catch()를 사용
+
+    // 프로미스 예제2
+    // fetch()를 사용한 API 호출
+    // fetch()는 서버에서 결과 데이터를 가져오는 프로세스를 시작하고 그 결과로 프로미스를 반환
+    // 성공 시 resolve(Response 객체); 를 해줌
+    
+    // fetch() 기본 문법
+    // fetch(url, [option]); [option]은 필수가 아님
+    // url: 접근하고자 하는 API URL (서버 주소)
+    // option: method, header 등을 지정할 수 있음
+
+    // 기본 사용법
+    // fetch('api-url')
+    // .then((res) => { //res: Response 객체 
+    //   return res.json(); // json() 메소드: 응답을 파싱해 JS 객체로 변환
+    // }) //     // 같은거임
+    // .then((data) => {
+    //   // data를 받아서 처리
+    // });
+
+    fetch('https://jsonplaceholder.typicode.com/posts')
+    .then((res) => {
+      console.log(res);
+      return res.json();
+    })
+    .then((data) => {
+      console.log(data);
+    });
+
+    // 2-2. 프로미스 체이닝
+    // 프로미스 성공 또는 실패 여부와 무관하게
+    // 이전 프로미스에서 반환된 것을 사용하여 프로미스를 계속 체이닝(연결) 할 수 있다.
+    // 콜백 지옥보다 가독성이 좋고 간결
+
+    // 프로미스 체이닝 예1
+    const myPromiseChain = new Promise((resolve, reject) => {
+      resolve(); // 실습용이라 바로 성공 처리
+    });
+    
+    myPromiseChain
+    .then(data => {
+      console.log(data);
+      return 'working...';
+    })
+    .then(data => {
+      // 이전 프로미스에서 받은 값을 출력
+      console.log(data);
+      throw new Error('failed! 🎆');
+    })
+    .catch(err => {
+      // 프로미스 수행 중 발생한 오류를 받아서 출력
+      console.log(err);
+    });
+
+    // 프로미스 체이닝 예2
+    // 콜백 지옥 예제2를 프로미스로 리팩터링 하기
+    const loginUser = (id, password) => {
+      return new Promise((resolve, reject) => {
+        // 2초간 네트워크 통신을 하는것처럼 꾸밈
+        setTimeout(() => {
+          if (id === 'chacha' && password === '1111') {
+            // 로그인에 성공하면 서버에서 받아온 유저 정보(여기서는 그냥 id)를 콜백 함수에 전달함
+            resolve(id);
+          } else {
+            reject(new Error('존재하지 않음'));
+          }
+        }, 2000);
+      });
+    };
+
+    const getRoles = (userId) => {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          if (userId === 'chacha') {
+            // 권한을 가져오는 작업을 하고 받아온 권한 정보를 콜백 함수에 전달함
+            resolve({ name: 'chachacha', role: 'admin' });
+          } else {
+            reject(new Error('접근 권한 없음'));
+          }
+        }, 1000);
+      })
+    };
+
+    const id = prompt('아이디를 입력하세요.');
+    const password = prompt('비밀번호를 입력하세요.');
+
+    loginUser(id, password)
+    .then(userId => { // 로그인이 성공하면
+      return getRoles(userId); // userId 값을 통해 권한 정보를 얻는 getRoles() 호출
+    })
+    .then(roleInfo => { // 권한 정보를 얻어오면
+      alert(`Welcome ${roleInfo.name} (${roleInfo.role})`); // alert에 정보 띄우기
+    })
+    .catch(err=> { // 에러 핸들링
+      console.error(err);
+    });
   </script>
 </body>
 </html>
