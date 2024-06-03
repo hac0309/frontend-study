@@ -2,6 +2,7 @@ import styled from "styled-components";
 import NewsItem from "./NewsItem";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 
 const NewsListBlock = styled.div`
   box-sizing: border-box;
@@ -15,6 +16,11 @@ const NewsListBlock = styled.div`
     padding-left: 1rem;
     padding-right: 1rem;
   }
+`;
+
+const DotLottie = styled(DotLottieReact)`
+  width: 100px;
+  height: 100px;
 `;
 
 // 샘플 데이터 렌더링 해보기
@@ -56,7 +62,7 @@ function NewsList() {
   // 로딩중일 때 처리
   // 추천: react-spinners 또는 Lottie File
   if (loading) {
-    return <NewsListBlock>로딩 중...</NewsListBlock>
+    return  <DotLottieReact src="https://lottie.host/f3527f0f-4bcb-44b0-b5dc-792b5169c754/g3kPnRkEOc.json" loop autoplay />
   }
 
   return (
