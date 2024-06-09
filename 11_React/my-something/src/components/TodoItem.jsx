@@ -108,9 +108,9 @@ function TodoItem(props) {
       {edit ? <Input value={newText} onChange={handleInput} onBlur={handleInputChange} autoFocus onKeyDown={handleInputEnter}/> : <Content done={todo.done} onClick={handleContent}>{todo.text} </Content> }
       <Remove onClick={handleConfirm}>
         {showModal && 
-          <Modal title="삭제 확인" content="TodoList를 정말 삭제하시겠습니까?">
+          <Modal title="삭제 확인" content="TodoList를 정말 삭제하시겠습니까?" onClose={closeModal} >
             <button type="button" className="btn-1" onClick={()=>onDelete(todo.id)}>확인</button>
-            <button type="button" className="btn-2" onClick={()=>closeModal}>취소</button>
+            <button type="button" className="btn-2" onClick={closeModal}>취소</button>
           </Modal>}
         <IoMdRemoveCircle/>
       </Remove>

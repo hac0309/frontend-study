@@ -71,7 +71,7 @@ function TodoInput(props) {
           +
         </StyledBtn>
       </TodoInputWrapper>
-      {showModal? <Modal onClose={closeModal} title="경고" content="빈값은 등록할 수 없습니다." /> : null}
+      {showModal && <Modal onClose={closeModal} title="경고" content="빈값은 등록할 수 없습니다." showConfirmBtn  /> }
     </>
   );
 };
