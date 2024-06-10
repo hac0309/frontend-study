@@ -76,11 +76,13 @@ const ModalWrapper = styled.div`
 `;
 
 function Modal(props) { 
-  const { onClose, title, content, delBtn, children } = props;
+  const { onClose, title, content, delBtn, children,showConfirmBtn  } = props;
 
   return (
-    <ModalBG>
-      <ModalWrapper>
+    // <ModalBG>
+    <ModalBG onClick={onClose}>
+      {/* <ModalWrapper> */}
+      <ModalWrapper onClick={(e) => e.stopPropagation()}>
         <div className="header">
           <span>{title}</span>
         </div>
@@ -89,7 +91,7 @@ function Modal(props) {
         </div>
         <div className="footer">
           {children}
-          {/* <button type="button" className="btn-1" >확인</button> */}
+          {showConfirmBtn && <button type="button" className="btn-1" onClick={onClose} >확인</button>}
           {delBtn &&
           <button type="button" className="btn-2" onClick={onClose}>닫기</button>
           }
