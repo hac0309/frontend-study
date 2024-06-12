@@ -4,6 +4,8 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Layout from "./pages/Layout";
 import Main from "./pages/Main";
 import ProductDetail from "./pages/ProductDetail";
+import { ToastContainer } from "react-toastify";
+
 
 
 
@@ -49,7 +51,15 @@ function App() {
             <Route path="detail/:productId" element={<ProductDetail/>}/>
           </Route>
         </Routes>
-
+      
+      {/* 토스트 컨테이너 하나로 재사용
+        만약 다른 옵션의 토스트를 쓰고 싶다면 컨테이너 여러 개 사용 */}
+      <ToastContainer 
+        position="bottom-right"
+        autoClose={3000}
+        pauseOnFocusLoss={false}
+        theme="dark"
+      />
 
     </>
   );
