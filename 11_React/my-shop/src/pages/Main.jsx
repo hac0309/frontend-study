@@ -1,16 +1,18 @@
 import { useEffect, useState } from "react";
 import { styled } from "styled-components";
-import { Col, Container, Row } from "react-bootstrap";
+import { Button, Col, Container, Row } from "react-bootstrap";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
+import { PacmanLoader } from "react-spinners";
 //  ----------------------------------------------------------라이브러리에서 꺼내온 것
 
-import { getAllProducts, selectProductList } from "../features/product/productSlice";
+import { addMoreProducts, getAllProducts, getMoreProductsAsync, selectProductList, selectStatus } from "../features/product/productSlice";
 import ProductListItem from "../components/ProductListItem";
 
 // 리액트(JS)에서 이미지 파일 가져오기
 // 1) src 폴더 안 이미지(상대 경로로 import 해서 사용)
 import bananaImg from "../images/bananana.jpg";
+import { getMoreProducts } from "../api/productAPI";
 // 2) public 폴더 안 이미지(root 경로로 바로 접근)
 // 빌드 시 src 폴더에 있는 코드와 파일은 압축이 되지만 public 폴더에 있는 것들은 그대로 보존
 // 이미지 같은 수정이 필요없는 static 파일의 경우 public에 보관하기도 함
@@ -29,6 +31,7 @@ const MainBackground = styled.div`
 function Main() {
   const dispath = useDispatch(); 
   const productList = useSelector(selectProductList); // 함수 자체를 넣어줘야함
+  const status = useSelector(selectStatus); // API 요청 상태 (로딩 상태)
 
   // 처음 마운트 됐을 때 서버에 상품 목록 데이터를 요청하고 그 결과를 리덕스 스토어에 전역 상태로 저장
   useEffect(() => {
@@ -42,6 +45,18 @@ function Main() {
       console.error(err);
     });
   }, []);
+
+  // async 를 안해주면................. 프로미스 함수가 찍힘.....
+  const haddleGetMoreProducts = async () => {
+    const result = await getMoreProducts();
+    // console.log(...result);
+    dispath(addMoreProducts(result));
+  };
+
+
+  const haddleGetMoreProductsAsync = () => {
+    dispath(getMoreProductsAsync());
+  };
 
 
   return (
@@ -80,8 +95,33 @@ function Main() {
               3) 상품 정보를 props로 넘겨서 데이터 바인딩 하기
              */}
             {productList.map(productItem => <ProductListItem productItem={productItem} key={productItem.id}/>)}
+
+            {/* 로딩 만들기 */}
+            {status === 'loading' &&
+              <PacmanLoader
+                color="#ff7b00"
+                size={50}
+                speedMultiplier={2}
+                cssOverride={{
+                  margin: '10px auto'
+                }}
+              />
+            }
           </Row>
         </Container>
+
+        {/* 상품 더보기 기능 만들기
+          더보기 버튼 클릭 시 axios를 사용하여 데이터 요청
+          받아온 결과를 전역 상태에 추가하기 위해 리듀서 추가 및 액션 생성 함수 export
+          스토어에 dispatch로 요청(액션) 보내기
+        */}
+        <Button variant="secondary" className="mb-4" onClick={haddleGetMoreProducts}>
+          더보기
+        </Button>
+
+        <Button variant="secondary" className="mb-4" onClick={haddleGetMoreProductsAsync}>
+          더보기 {status}
+        </Button>
       </section>
     </>
   );
