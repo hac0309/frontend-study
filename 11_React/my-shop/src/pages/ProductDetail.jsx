@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Alert, Button, Col, Container, Form, Row } from "react-bootstrap";
+import { Alert, Button, Col, Container, Form, Nav, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import styled, { keyframes } from "styled-components";
@@ -11,6 +11,7 @@ import 'react-toastify/dist/ReactToastify.min.css'; // ReactToastify CSS 추가
 
 import { clearSelectedProduct, getSelectedProduct, selectProduct } from "../features/product/productSlice";
 import { toast } from "react-toastify";
+import TabContents from "../components/TabContents";
 
 
 // 스타일드 컴포넌트를 이용한 애니메이션 속성 적용
@@ -28,12 +29,15 @@ const StyledAlert = styled(Alert)`
 function ProductDetail() {
   const { productId } = useParams();
   // console.log(useParams());
-  const [alert, setAlert] = useState(true);
-  const [orderCount, setOrderCount] = useState(1);
+  const [alert, setAlert] = useState(true);// Info Alert창
+  const [orderCount, setOrderCount] = useState(1); // 주문수량 상태
+  const [currentTabIndex , setCurrentTabIndex ] = useState(0); // 현재 탭 상태
+  const [currentTab, setCurrentTab] = useState('detail'); // 현재 탭 상태
 
   const dispatch = useDispatch(); // action 객체를 스토어에 전달해줌
   const product = useSelector(selectProduct);
   const fomatter = Intl.NumberFormat('ko-KR',{style:'currency', currency:'KRW'});
+  
 
   
   // 처음 마운트 됐을 때 서버에 상품 id를 이용하여 데이터를 요청하고 그 결과를 리덕스 스토어에 저장
@@ -111,6 +115,68 @@ function ProductDetail() {
           <Button variant="primary" >주문하기</Button>
         </Col>
       </Row>
+
+      {/* 탭 버튼 UI */}
+      {/* defaultActiveKey: 기본으로 active 할 탭 , active 클래스가 들어가있음*/}
+      <Nav variant="tabs" defaultActiveKey="link-0" className="my-3">
+        <Nav.Item>
+          <Nav.Link eventKey="link-0" onClick={() => {
+            setCurrentTabIndex(0)
+            setCurrentTab('detail');
+          }}>상세정보</Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+          <Nav.Link eventKey="link-1" onClick={() => {
+            setCurrentTabIndex(1)
+            setCurrentTab('review')
+          }}>리뷰</Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+          <Nav.Link eventKey="link-2" onClick={() => {
+            setCurrentTabIndex(2)
+            setCurrentTab('qa')
+          }}>Q&amp;A</Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+          <Nav.Link eventKey="link-3" onClick={() => {
+            setCurrentTabIndex(3)
+            setCurrentTab('exchange')
+          }}>반품/교환정보</Nav.Link>
+        </Nav.Item>
+      </Nav>
+
+      {/* 탭의 내용을 다 만들어 놓고 조건부 렌더링하면 됨 */}
+      {/* 방법1: 삼항 연산자 사용(가독성 나쁨) */}
+      {currentTabIndex === 0
+        ? <div>탭 내용1</div>
+        : currentTabIndex === 1
+          ? <div>탭 내용2</div>
+          : currentTabIndex === 2
+            ? <div>탭 내용3</div>
+            : currentTabIndex === 3
+              ? <div>탭 내용4</div>
+              : null
+      }
+
+      {/* 방법2: 컴포넌츠로 추출 (가독성 good) */}
+      < TabContents currentTabIndex={currentTabIndex}/>
+
+      {/* 방법3(편법): 배열이나 객체 형태로 만들어서 조건부 렌더링 */}
+      {/* 배열 상태 */}
+      {[
+        <div>탭 내용1</div>,
+        <div>탭 내용2</div>,
+        <div>탭 내용3</div>,
+        <div>탭 내용4</div>
+      ][currentTabIndex]}
+
+      {/* 객체 형태 */}
+      {{
+        detail: <div>탭 내용1</div>,
+        review: <div>탭 내용2</div>,
+        qa: <div>탭 내용3</div>,
+        exchange: <div>탭 내용4</div>
+      }[currentTab]}
     </Container>
   );
 }
