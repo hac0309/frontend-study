@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { decreaseCount, increaseCount } from "../features/cart/cartSlice";
+import { decreaseCount, increaseCount, removeItemFromCart } from "../features/cart/cartSlice";
 
 function CartItem(props) {
   const {cartItem : {title,id,count,price},index} = props
@@ -18,6 +18,9 @@ function CartItem(props) {
         <button onClick={() =>dispatch(increaseCount(id))}>+</button>
       </td>
       <td>{formatter.format(price * count)}원</td>
+      <td>
+        <button onClick={() => dispatch(removeItemFromCart(id))}>X</button>
+      </td>
     </tr>
   );
 };
