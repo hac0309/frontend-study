@@ -6,6 +6,7 @@ import Main from "./pages/Main";
 import ProductDetail from "./pages/ProductDetail";
 import { ToastContainer } from "react-toastify";
 import Cart from "./pages/Cart";
+import Login from "./pages/Login";
 
 
 
@@ -58,6 +59,7 @@ function App() {
             */}
             <Route path="detail/:productId" element={<ProductDetail/>}/>
             <Route path="cart" element={<Cart/>}/>
+            <Route path="login" element={<Login/>}/>
             <Route path="*" element={<div>페이지가 존재하지 않습니다.</div>}/>
           </Route>
         </Routes>

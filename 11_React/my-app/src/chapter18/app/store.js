@@ -3,6 +3,7 @@ import counterReducer from "../features/counter/counterSlice"; // 공식 문서�
 import productReducer from "../features/product/productSlice";
 
 
+
 // 1. Redux Store 만들기(app/store.js)
 // 전역 state를 보관하는 저장소
 // configureStore를 쓰면 Redux Devtools 설정이 자동으로 추가됨
